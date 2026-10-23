@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập TK8: Hex sang RGB - Lê Gia Huy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 py-4 px-6 shadow-sm">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="42.html" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ (42.html)
+            </a>
+            <span class="text-xs text-slate-500 font-medium">Lê Gia Huy - 241A010539</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+        <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm mb-6">
+            <div class="inline-block px-3 py-1 bg-rose-100 text-rose-700 font-bold text-xs rounded-lg mb-3">TK8</div>
+            <h1 class="text-2xl font-bold text-slate-900 mb-2">Bài tập TK8: Chuyển đổi màu Hex sang RGB</h1>
+            <p class="text-slate-600 text-sm">Viết hàm nhận mã màu Hex (ví dụ: #FF0000) và trả về giá trị RGB tương ứng (rgb(255, 0, 0)).</p>
+        </div>
+
+        <!-- Interactive Tool Card -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm">
+            <div class="max-w-md mx-auto space-y-6">
+                <!-- Color Picker & Input -->
+                <div class="flex items-center gap-4">
+                    <input type="color" id="colorPicker" value="#4f46e5" onchange="syncInput(this.value)"
+                        class="w-14 h-14 rounded-2xl border border-slate-200 cursor-pointer p-1 bg-white shadow-sm">
+                    <div class="flex-grow">
+                        <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Mã màu Hex</label>
+                        <input type="text" id="hexInput" value="#4F46E5" placeholder="#FF0000" oninput="convertHexToRgb()"
+                            class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono text-sm font-bold text-slate-800 focus:outline-none focus:border-rose-500 transition">
+                    </div>
+                </div>
+
+                <!-- Color Preview Box -->
+                <div id="colorPreview" class="w-full h-20 rounded-2xl shadow-inner border border-slate-200 transition-colors duration-300" style="background-color: #4F46E5;"></div>
+
+                <!-- Result Display -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Kết quả giá trị RGB</label>
+                    <input type="text" id="rgbResult" readonly value="rgb(79, 70, 229)"
+                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-center font-mono text-lg font-bold text-rose-600 focus:outline-none">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-400 py-6 border-t border-slate-200">
+        <p>© 2026 Lê Gia Huy - MSSV: 241A010539 - Lớp 261INT440703</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function syncInput(val) {
+            document.getElementById('hexInput').value = val.toUpperCase();
+            convertHexToRgb();
+        }
+
+        function convertHexToRgb() {
+            let hex = document.getElementById('hexInput').value.trim();
+            
+            // Thêm dấu # nếu người dùng quên nhập
+            if (hex.charAt(0) !== '#' && (hex.length === 3 || hex.length === 6)) {
+                hex = '#' + hex;
+            }
+
+            // Xử lý mã Hex dạng viết tắt (ví dụ: #F00 thành #FF0000)
+            let cleanHex = hex.replace('#', '');
+            if (cleanHex.length === 3) {
+                cleanHex = cleanHex.split('').map(char => char + char).join('');
+            }
+
+            // Kiểm tra tính hợp lệ của mã Hex 6 ký tự
+            if (cleanHex.length === 6 && /^[0-9A-Fa-f]{6}$/.test(cleanHex)) {
+                let r = parseInt(cleanHex.substring(0, 2), 16);
+                let g = parseInt(cleanHex.substring(2, 4), 16);
+                let b = parseInt(cleanHex.substring(4, 6), 16);
+
+                let rgbStr = `rgb(${r}, ${g}, ${b})`;
+                document.getElementById('rgbResult').value = rgbStr;
+                
+                // Cập nhật màu background xem trước và color picker
+                document.getElementById('colorPreview').style.backgroundColor = rgbStr;
+                if(hex.length === 7) {
+                    document.getElementById('colorPicker').value = hex;
+                }
+            } else {
+                document.getElementById('rgbResult').value = 'Mã Hex không hợp lệ!';
+            }
+        }
+    </script>
+</body>
+</html>

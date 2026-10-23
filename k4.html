@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập K4: Phân Trang Danh Sách - Lê Gia Huy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 py-4 px-6 shadow-sm">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="42.html" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ (42.html)
+            </a>
+            <span class="text-xs text-slate-500 font-medium">Lê Gia Huy - 241A010539</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+        <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm mb-6">
+            <div class="inline-block px-3 py-1 bg-amber-100 text-amber-800 font-bold text-xs rounded-lg mb-3">K4</div>
+            <h1 class="text-2xl font-bold text-slate-900 mb-2">Bài tập K4: Phân Trang Danh Sách</h1>
+            <p class="text-slate-600 text-sm">Hiển thị danh sách 50 mục. Chỉ hiển thị 10 mục mỗi trang và tạo các nút phân trang (1, 2, 3...). Khi bấm vào nút, cập nhật danh sách hiển thị tương ứng.</p>
+        </div>
+
+        <!-- Pagination Box -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+                    <i class="fa-solid fa-list-ol text-amber-600"></i> Danh sách dữ liệu (50 mục)
+                </h3>
+                <span id="pageIndicator" class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-lg">Trang 1 / 5</span>
+            </div>
+
+            <!-- List Container -->
+            <ul id="itemList" class="divide-y divide-slate-100 border border-slate-100 rounded-xl mb-6 overflow-hidden">
+                <!-- Nội dung các mục sẽ được render bằng JavaScript -->
+            </ul>
+
+            <!-- Pagination Buttons -->
+            <div id="paginationControls" class="flex flex-wrap items-center justify-center gap-2">
+                <!-- Các nút phân trang sẽ được render động bằng JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-400 py-6 border-t border-slate-200">
+        <p>© 2026 Lê Gia Huy - MSSV: 241A010539 - Lớp 261INT440703</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tạo mảng dữ liệu gồm 50 mục mẫu
+        const totalItems = 50;
+        const itemsPerPage = 10;
+        const items = Array.from({ length: totalItems }, (_, index) => `Phần tử dữ liệu số ${index + 1} - Lập trình Web LTW`);
+        
+        let currentPage = 1;
+
+        function renderList() {
+            const listEl = document.getElementById('itemList');
+            listEl.innerHTML = '';
+
+            // Tính toán vị trí cắt mảng dữ liệu cho trang hiện tại
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const currentItems = items.slice(start, end);
+
+            // Hiển thị danh sách mục lên giao diện
+            currentItems.forEach((item, idx) => {
+                const li = document.createElement('li');
+                li.className = 'px-5 py-3.5 text-sm text-slate-700 hover:bg-slate-50 flex items-center justify-between transition';
+                li.innerHTML = `<span><i class="fa-solid fa-circle-dot text-[8px] text-amber-500 mr-2.5"></i> ${item}</span> <span class="text-xs font-mono text-slate-400">#${start + idx + 1}</span>`;
+                listEl.appendChild(li);
+            });
+
+            // Cập nhật thông tin số trang
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            document.getElementById('pageIndicator').innerText = `Trang ${currentPage} / ${totalPages}`;
+
+            renderPaginationControls(totalPages);
+        }
+
+        function renderPaginationControls(totalPages) {
+            const controlsEl = document.getElementById('paginationControls');
+            controlsEl.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = `w-10 h-10 rounded-xl text-sm font-semibold transition flex items-center justify-center ${
+                    i === currentPage 
+                        ? 'bg-amber-600 text-white shadow-md' 
+                        : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                }`;
+                btn.onclick = () => {
+                    currentPage = i;
+                    renderList();
+                };
+                controlsEl.appendChild(btn);
+            }
+        }
+
+        // Chạy khởi tạo lần đầu khi tải trang
+        window.onload = () => {
+            renderList();
+        };
+    </script>
+</body>
+</html>

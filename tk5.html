@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập TK5: Accordion đơn giản - Lê Gia Huy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .accordion-item.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+        .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 py-4 px-6 shadow-sm">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="42.html" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ (42.html)
+            </a>
+            <span class="text-xs text-slate-500 font-medium">Lê Gia Huy - 241A010539</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+        <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm mb-6">
+            <div class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 font-bold text-xs rounded-lg mb-3">TK5</div>
+            <h1 class="text-2xl font-bold text-slate-900 mb-2">Bài tập TK5: Accordion đơn giản</h1>
+            <p class="text-slate-600 text-sm">Tạo một phần tử accordion (tiêu đề và nội dung ẩn). Khi bấm vào tiêu đề, nội dung sẽ trượt xuống/lên sử dụng <code class="text-indigo-600 font-mono">classList.toggle()</code> và <code class="text-indigo-600 font-mono">max-height/transition</code>.</p>
+        </div>
+
+        <!-- Accordion Container -->
+        <div class="space-y-4">
+            
+            <!-- Item 1 -->
+            <div class="accordion-item bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                <button class="accordion-header w-full px-6 py-4 text-left font-bold text-slate-800 bg-white hover:bg-slate-50 flex items-center justify-between transition">
+                    <span>Giới thiệu học phần Lập trình Web</span>
+                    <i class="fa-solid fa-chevron-down arrow-icon text-slate-400"></i>
+                </button>
+                <div class="accordion-content px-6 text-slate-600 text-sm border-t border-slate-100 bg-slate-50/50">
+                    Học phần cung cấp kiến thức nền tảng về HTML5, CSS3 và JavaScript phía client, giúp xây dựng các trang web tương tác động và đáp ứng tốt trên các thiết bị.
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                <button class="accordion-header w-full px-6 py-4 text-left font-bold text-slate-800 bg-white hover:bg-slate-50 flex items-center justify-between transition">
+                    <span>Cách sử dụng classList.toggle() trong JS</span>
+                    <i class="fa-solid fa-chevron-down arrow-icon text-slate-400"></i>
+                </button>
+                <div class="accordion-content px-6 text-slate-600 text-sm border-t border-slate-100 bg-slate-50/50">
+                    Phương thức <code class="font-mono text-indigo-600">classList.toggle('active')</code> tự động thêm class nếu chưa có, hoặc gỡ bỏ class đó nếu đã tồn tại trên phần tử, rất tối ưu cho hiệu ứng bật/tắt.
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                <button class="accordion-header w-full px-6 py-4 text-left font-bold text-slate-800 bg-white hover:bg-slate-50 flex items-center justify-between transition">
+                    <span>Hiệu ứng trượt với max-height và transition</span>
+                    <i class="fa-solid fa-chevron-down arrow-icon text-slate-400"></i>
+                </button>
+                <div class="accordion-content px-6 text-slate-600 text-sm border-t border-slate-100 bg-slate-50/50">
+                    Bằng cách cấu hình <code class="font-mono text-indigo-600">max-height: 0</code> kết hợp <code class="font-mono text-indigo-600">overflow: hidden</code>, trình duyệt có thể tạo chuyển động trượt mượt mà khi thay đổi chiều cao.
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-400 py-6 border-t border-slate-200">
+        <p>© 2026 Lê Gia Huy - MSSV: 241A010539 - Lớp 261INT440703</p>
+    </footer>
+
+    <!-- JavaScript xử lý Toggle -->
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        headers.forEach(header => {
+            header.addEventListener('click', function() {
+                const item = this.parentElement;
+                
+                // (Tùy chọn) Đóng các mục khác nếu muốn chỉ mở 1 mục tại một thời điểm:
+                // document.querySelectorAll('.accordion-item').forEach(i => {
+                //     if (i !== item) i.classList.remove('active');
+                // });
+
+                // Bật/tắt trạng thái active của mục hiện tại
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

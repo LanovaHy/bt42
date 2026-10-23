@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập 42 - Lê Gia Huy | Lập Trình Web</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .exercise-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .exercise-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- HEADER / PROFILE SECTION -->
+    <header class="bg-gradient-to-r from-indigo-700 via-purple-700 to-indigo-900 text-white shadow-xl relative overflow-hidden">
+        <!-- Background Pattern Deco -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8">
+                
+                <!-- Avatar & Basic Info -->
+                <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+                    <img src="https://placehold.co/120x120/4f46e5/ffffff?text=Gia+Huy" 
+                         onerror="this.src='https://placehold.co/120x120/4f46e5/ffffff?text=Avatar'" 
+                         alt="Avatar Lê Gia Huy" 
+                         class="w-28 h-28 rounded-2xl object-cover border-4 border-white/20 shadow-2xl">
+                    
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider text-indigo-200 mb-2 border border-white/10">
+                            <i class="fa-solid fa-code text-indigo-300"></i> Bài Tập 42 - Javascript LTW TanNQ
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Lê Gia Huy</h1>
+                        <p class="text-indigo-200 font-medium text-sm sm:text-base mt-1">
+                            <i class="fa-solid fa-graduation-cap mr-1.5 opacity-80"></i>Lớp: <span class="text-white font-semibold">261INT440703</span>
+                            <span class="mx-2 opacity-50">|</span>
+                            <i class="fa-solid fa-id-card mr-1.5 opacity-80"></i>MSSV: <span class="text-white font-semibold">241A010539</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- External Links -->
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <a href="https://ntan-tdt.github.io/ltw.vhu.io/phan_thuc_hanh_n.html" target="_blank" class="px-4 py-2.5 bg-white text-indigo-700 hover:bg-indigo-50 font-semibold rounded-xl shadow-lg transition duration-200 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Đề Bài LTW
+                    </a>
+                </div>
+            </div>
+
+            <!-- Detailed Student Info Cards -->
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-6 border-t border-white/10 text-xs sm:text-sm">
+                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10 flex items-center gap-3">
+                    <i class="fa-solid fa-cake-candles text-indigo-300 text-base"></i>
+                    <div>
+                        <span class="block text-indigo-200 text-[11px] uppercase font-medium">Ngày sinh</span>
+                        <span class="font-semibold text-white">27/09/2006</span>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10 flex items-center gap-3">
+                    <i class="fa-solid fa-map-pin text-indigo-300 text-base"></i>
+                    <div>
+                        <span class="block text-indigo-200 text-[11px] uppercase font-medium">Quê quán</span>
+                        <span class="font-semibold text-white">Tây Ninh</span>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10 flex items-center gap-3">
+                    <i class="fa-solid fa-phone text-indigo-300 text-base"></i>
+                    <div>
+                        <span class="block text-indigo-200 text-[11px] uppercase font-medium">Số điện thoại</span>
+                        <a href="tel:0856952654" class="font-semibold text-white hover:underline">0856952654</a>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10 flex items-center gap-3">
+                    <i class="fa-solid fa-envelope text-indigo-300 text-base"></i>
+                    <div>
+                        <span class="block text-indigo-200 text-[11px] uppercase font-medium">Email</span>
+                        <a href="mailto:Legiahuygm2709@gmail.com" class="font-semibold text-white hover:underline truncate block max-w-[170px]" title="Legiahuygm2709@gmail.com">Legiahuygm2709@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Full Width Bar -->
+            <div class="mt-3 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/10 flex items-center gap-3 text-xs sm:text-sm">
+                <i class="fa-solid fa-house-chimney text-indigo-300"></i>
+                <span class="text-indigo-200 font-medium shrink-0">Địa chỉ cư trú:</span>
+                <span class="font-semibold text-white truncate">Tổ 7, ấp Thuận An, Xã Truông Mít</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-folder-tree text-indigo-600"></i> Menu Bài Tập Thực Hành
+                </h2>
+                <p class="text-slate-500 text-sm mt-1">Danh sách 6 bài tập JavaScript thuộc học phần Lập trình Web.</p>
+            </div>
+            <span class="self-start sm:self-auto px-3.5 py-1.5 bg-indigo-50 text-indigo-700 text-xs font-semibold rounded-full border border-indigo-100 flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-check text-emerald-500"></i> Ready for integration
+            </span>
+        </div>
+
+        <!-- EXERCISES GRID (6 EXERCISES) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- BÀI TK5 -->
+            <div class="exercise-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 font-bold text-xs rounded-lg">TK5</span>
+                        <span class="text-xs text-slate-400 font-medium">Accordion Đơn Giản</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Bài tập TK5</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Tạo một phần tử accordion (tiêu đề và nội dung ẩn). Khi bấm vào tiêu đề, nội dung sẽ trượt xuống/lên (sử dụng classList.toggle() và max-height/transition trong CSS).</p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <a href="tk5.html" class="flex-1 py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs rounded-xl shadow-md transition text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Mở bài tập
+                    </a>
+                    <button onclick="previewExercise('TK5')" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition" title="Xem trước">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- BÀI TK7 -->
+            <div class="exercise-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-emerald-100 text-emerald-700 font-bold text-xs rounded-lg">TK7</span>
+                        <span class="text-xs text-slate-400 font-medium">Tạo Chuỗi Ngẫu Nhiên</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Bài tập TK7</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Viết hàm tạo chuỗi mật khẩu ngẫu nhiên dài 8 ký tự, bao gồm chữ cái thường và số.</p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <a href="tk7.html" class="flex-1 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs rounded-xl shadow-md transition text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Mở bài tập
+                    </a>
+                    <button onclick="previewExercise('TK7')" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition" title="Xem trước">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- BÀI TK8 -->
+            <div class="exercise-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-rose-100 text-rose-700 font-bold text-xs rounded-lg">TK8</span>
+                        <span class="text-xs text-slate-400 font-medium">Hex sang RGB</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Bài tập TK8</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Viết hàm nhận mã màu Hex (ví dụ: #FF0000) và trả về giá trị RGB tương ứng (rgb(255, 0, 0)).</p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <a href="tk8.html" class="flex-1 py-2.5 px-4 bg-rose-600 hover:bg-rose-700 text-white font-medium text-xs rounded-xl shadow-md transition text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Mở bài tập
+                    </a>
+                    <button onclick="previewExercise('TK8')" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition" title="Xem trước">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- BÀI K4 -->
+            <div class="exercise-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold text-xs rounded-lg">K4</span>
+                        <span class="text-xs text-slate-400 font-medium">Phân Trang Danh Sách</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Bài tập K4</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Hiển thị danh sách 50 mục. Chỉ hiển thị 10 mục mỗi trang và tạo các nút phân trang (1, 2, 3...). Khi bấm vào nút, cập nhật danh sách hiển thị tương ứng.</p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <a href="k4.html" class="flex-1 py-2.5 px-4 bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs rounded-xl shadow-md transition text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Mở bài tập
+                    </a>
+                    <button onclick="previewExercise('K4')" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition" title="Xem trước">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- BÀI K6 -->
+            <div class="exercise-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 font-bold text-xs rounded-lg">K6</span>
+                        <span class="text-xs text-slate-400 font-medium">Sự Kiện Bàn Phím</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Bài tập K6</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Viết một hàm JS lắng nghe sự kiện keydown. Khi người dùng bấm phím mũi tên LÊN, dịch chuyển một khối &lt;div&gt; lên trên; phím MŨI TÊN XUỐNG, dịch chuyển khối xuống dưới.</p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <a href="k6.html" class="flex-1 py-2.5 px-4 bg-purple-600 hover:bg-purple-700 text-white font-medium text-xs rounded-xl shadow-md transition text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Mở bài tập
+                    </a>
+                    <button onclick="previewExercise('K6')" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition" title="Xem trước">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- BÀI K8 -->
+            <div class="exercise-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-sky-100 text-sky-700 font-bold text-xs rounded-lg">K8</span>
+                        <span class="text-xs text-slate-400 font-medium">Tính Chỉ Số BMI</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Bài tập K8</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-3">Tạo input cân nặng (kg) và chiều cao (m). Viết hàm tính BMI và hiển thị phân loại (Thiếu cân, Bình thường, Thừa cân).</p>
+                </div>
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <a href="k8.html" class="flex-1 py-2.5 px-4 bg-sky-600 hover:bg-sky-700 text-white font-medium text-xs rounded-xl shadow-md transition text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Mở bài tập
+                    </a>
+                    <button onclick="previewExercise('K8')" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition" title="Xem trước">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- PREVIEW MODAL CONTAINER -->
+    <div id="previewModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl scale-95 transition-all duration-300">
+            <div class="flex justify-between items-center pb-4 border-b border-slate-100">
+                <h4 id="modalTitle" class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info text-indigo-600"></i> Thông Tin Bài Tập
+                </h4>
+                <button onclick="closePreviewModal()" class="text-slate-400 hover:text-slate-600 text-lg w-8 h-8 rounded-full flex items-center justify-center hover:bg-slate-100 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="modalBody" class="py-4 text-sm text-slate-600 leading-relaxed">
+                <!-- Dynamic Content -->
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex justify-end gap-2">
+                <button onclick="closePreviewModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition">
+                    Đóng
+                </button>
+                <a id="modalGoBtn" href="#" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl transition flex items-center gap-1.5">
+                    Đến trang bài tập <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 space-y-1">
+            <p>© 2026 <b>Lê Gia Huy</b> - MSSV: 241A010539 - Lớp 261INT440703.</p>
+            <p class="text-slate-400">Trang web được triển khai trực tiếp trên GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const previewInfo = {
+            'TK5': {
+                title: 'Bài Tập TK5: Accordion Đơn Giản',
+                file: 'tk5.html',
+                desc: 'Tạo một phần tử accordion (tiêu đề và nội dung ẩn). Khi bấm vào tiêu đề, nội dung sẽ trượt xuống/lên (sử dụng classList.toggle() và max-height/transition trong CSS).'
+            },
+            'TK7': {
+                title: 'Bài Tập TK7: Tạo Chuỗi Ngẫu Nhiên',
+                file: 'tk7.html',
+                desc: 'Viết hàm tạo chuỗi mật khẩu ngẫu nhiên dài 8 ký tự, bao gồm chữ cái thường và số.'
+            },
+            'TK8': {
+                title: 'Bài Tập TK8: Chuyển Đổi Màu Hex Sang RGB',
+                file: 'tk8.html',
+                desc: 'Viết hàm nhận mã màu Hex (ví dụ: #FF0000) và trả về giá trị RGB tương ứng (rgb(255, 0, 0)).'
+            },
+            'K4': {
+                title: 'Bài Tập K4: Phân Trang Danh Sách',
+                file: 'k4.html',
+                desc: 'Hiển thị danh sách 50 mục. Chỉ hiển thị 10 mục mỗi trang và tạo các nút phân trang (1, 2, 3...). Khi bấm vào nút, cập nhật danh sách hiển thị tương ứng.'
+            },
+            'K6': {
+                title: 'Bài Tập K6: Xử Lý Sự Kiện Bàn Phím',
+                file: 'k6.html',
+                desc: 'Viết một hàm JS lắng nghe sự kiện keydown. Khi người dùng bấm phím mũi tên LÊN, dịch chuyển một khối <div> lên trên; phím MŨI TÊN XUỐNG, dịch chuyển khối xuống dưới.'
+            },
+            'K8': {
+                title: 'Bài Tập K8: Tính Chỉ Số BMI và Phân Loại',
+                file: 'k8.html',
+                desc: 'Tạo input cân nặng (kg) và chiều cao (m). Viết hàm tính BMI và hiển thị phân loại (Thiếu cân, Bình thường, Thừa cân).'
+            }
+        };
+
+        function previewExercise(key) {
+            const data = previewInfo[key];
+            if (!data) return;
+
+            document.getElementById('modalTitle').innerHTML = `<i class="fa-solid fa-circle-info text-indigo-600"></i> ${data.title}`;
+            document.getElementById('modalBody').innerHTML = `<p>${data.desc}</p><p class="mt-3 text-xs text-slate-400">Đường dẫn file: <code class="text-indigo-600 font-mono">${data.file}</code></p>`;
+            document.getElementById('modalGoBtn').href = data.file;
+
+            const modal = document.getElementById('previewModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+        }
+
+        function closePreviewModal() {
+            const modal = document.getElementById('previewModal');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        document.getElementById('previewModal').addEventListener('click', (e) => {
+            if (e.target.id === 'previewModal') closePreviewModal();
+        });
+    </script>
+</body>
+</html>

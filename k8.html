@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập K8: Tính Chỉ Số BMI - Lê Gia Huy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 py-4 px-6 shadow-sm">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="42.html" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ (42.html)
+            </a>
+            <span class="text-xs text-slate-500 font-medium">Lê Gia Huy - 241A010539</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+        <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm mb-6">
+            <div class="inline-block px-3 py-1 bg-sky-100 text-sky-700 font-bold text-xs rounded-lg mb-3">K8</div>
+            <h1 class="text-2xl font-bold text-slate-900 mb-2">Bài tập K8: Tính Chỉ Số BMI và Phân Loại</h1>
+            <p class="text-slate-600 text-sm">Tạo input cân nặng (kg) và chiều cao (m). Viết hàm tính BMI và hiển thị phân loại (Thiếu cân, Bình thường, Thừa cân).</p>
+        </div>
+
+        <!-- Interactive BMI Tool -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm">
+            <div class="max-w-md mx-auto space-y-5">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Cân nặng (kg)</label>
+                    <input type="number" id="weight" step="0.1" placeholder="Ví dụ: 65" 
+                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 focus:outline-none focus:border-sky-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Chiều cao (m)</label>
+                    <input type="number" id="height" step="0.01" placeholder="Ví dụ: 1.70" 
+                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 focus:outline-none focus:border-sky-500">
+                </div>
+
+                <button onclick="calculateBMI()" class="w-full py-3 px-6 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calculator"></i> Tính Chỉ Số BMI
+                </button>
+
+                <!-- Result Box -->
+                <div id="resultBox" class="hidden mt-6 p-5 bg-slate-50 border border-slate-200 rounded-2xl text-center space-y-2">
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Kết quả đánh giá</span>
+                    <div id="bmiValue" class="text-3xl font-extrabold text-sky-600">0.0</div>
+                    <div id="bmiCategory" class="inline-block px-3 py-1 rounded-full text-xs font-bold mt-1">--</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-400 py-6 border-t border-slate-200">
+        <p>© 2026 Lê Gia Huy - MSSV: 241A010539 - Lớp 261INT440703</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const resultBox = document.getElementById('resultBox');
+            const bmiValueEl = document.getElementById('bmiValue');
+            const bmiCategoryEl = document.getElementById('bmiCategory');
+
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                alert('Vui lòng nhập cân nặng và chiều cao hợp lệ!');
+                return;
+            }
+
+            // Công thức tính BMI = cân nặng / (chiều cao * chiều cao)
+            const bmi = weight / (height * height);
+            bmiValueEl.innerText = bmi.toFixed(2);
+
+            let category = '';
+            let badgeClass = '';
+
+            if (bmi < 18.5) {
+                category = 'Thiếu cân';
+                badgeClass = 'bg-amber-100 text-amber-800';
+            } else if (bmi >= 18.5 && bmi < 25) {
+                category = 'Bình thường';
+                badgeClass = 'bg-emerald-100 text-emerald-800';
+            } else if (bmi >= 25 && bmi < 30) {
+                category = 'Thừa cân';
+                badgeClass = 'bg-orange-100 text-orange-800';
+            } else {
+                category = 'Béo phì';
+                badgeClass = 'bg-rose-100 text-rose-800';
+            }
+
+            bmiCategoryEl.innerText = category;
+            bmiCategoryEl.className = `inline-block px-3 py-1 rounded-full text-xs font-bold mt-1 ${badgeClass}`;
+            resultBox.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

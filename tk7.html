@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập TK7: Tạo chuỗi ngẫu nhiên - Lê Gia Huy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 py-4 px-6 shadow-sm">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="42.html" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ (42.html)
+            </a>
+            <span class="text-xs text-slate-500 font-medium">Lê Gia Huy - 241A010539</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+        <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm mb-6">
+            <div class="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 font-bold text-xs rounded-lg mb-3">TK7</div>
+            <h1 class="text-2xl font-bold text-slate-900 mb-2">Bài tập TK7: Tạo chuỗi ngẫu nhiên</h1>
+            <p class="text-slate-600 text-sm">Viết hàm tạo chuỗi mật khẩu ngẫu nhiên dài 8 ký tự, bao gồm các ký tự chữ cái thường và số.</p>
+        </div>
+
+        <!-- Interactive Tool Card -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm text-center">
+            <div class="max-w-md mx-auto space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Kết quả chuỗi ngẫu nhiên (8 ký tự)</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="resultString" readonly placeholder="Chưa tạo chuỗi..." 
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-center font-mono text-lg font-bold text-emerald-600 focus:outline-none">
+                        <button onclick="copyToClipboard()" class="px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition text-sm font-semibold" title="Sao chép">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button onclick="generateRandomString()" class="w-full py-3 px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rotate"></i> Tạo chuỗi mới
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-400 py-6 border-t border-slate-200">
+        <p>© 2026 Lê Gia Huy - MSSV: 241A010539 - Lớp 261INT440703</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function generateRandomString() {
+            // Các ký tự cho phép: chữ cái thường và số
+            const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            
+            // Vòng lặp tạo chuỗi ngẫu nhiên dài 8 ký tự
+            for (let i = 0; i < 8; i++) {
+                const randomIndex = Math.floor(Math.random() * chars.length);
+                result += chars[randomIndex];
+            }
+            
+            document.getElementById('resultString').value = result;
+        }
+
+        function copyToClipboard() {
+            const input = document.getElementById('resultString');
+            if (!input.value) return;
+            navigator.clipboard.writeText(input.value);
+            alert('Đã sao chép chuỗi: ' + input.value);
+        }
+
+        // Tự động tạo một chuỗi ngay khi mở trang
+        window.onload = generateRandomString;
+    </script>
+</body>
+</html>
